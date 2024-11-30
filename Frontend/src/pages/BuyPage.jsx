@@ -292,7 +292,7 @@ const handlePlaceOrder = () => {
                             
                             <div className="flex justify-between font-semibold text-gray-800">
                                 <span>Total</span>
-                                <span>₹{subtotalPrice+shippingFees}</span>
+                                <span>₹{parseInt(subtotalPrice)+parseInt(shippingFees)}</span>
                             </div>
                         </div>
 

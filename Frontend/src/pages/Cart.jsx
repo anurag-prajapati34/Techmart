@@ -71,12 +71,12 @@ const CartPage = () => {
           {/* Cart Summary */}
           <div className="mt-8 flex flex-col sm:flex-row justify-between text-lg font-semibold text-gray-800">
             <div className="text-gray-600">
-              <p>Subtotal: {subtotalPrice}</p>
-              <p>Shipping: {shippingFees}</p>
+              <p>Subtotal: ₹{subtotalPrice}</p>
+              <p>Shipping: ₹{shippingFees}</p>
              
             </div>
             <div className="text-right mt-4 sm:mt-0">
-              <p>Total: ${subtotalPrice+shippingFees}</p>
+              <p>Total: ₹{subtotalPrice+shippingFees}</p>
             </div>
           </div>
 

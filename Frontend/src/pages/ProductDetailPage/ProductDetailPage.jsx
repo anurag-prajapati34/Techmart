@@ -114,7 +114,7 @@ export const ProductDetailPage = () => {
               </button>
               <button
                 style={{ border: "2px solid var(--primary-color)" }}
-                onClick={() => logedInUser ? navigate('/order', { state: { products: [{ product, quantityToBuy, sizeToBuy }] } }) : toast.error("User not logedin")}
+                onClick={() => logedInUser ? navigate('/order', { state: { products: [{ product, quantityToBuy,  }], "subtotalPrice":product?.price,"shippingFees":0} }) : toast.error("User not logedin")}
                 className="py-2 px-4 border-2  text-black hover:bg-[rgba(120,150,176,0.094)] rounded-full"
               >
                 BUY NOW

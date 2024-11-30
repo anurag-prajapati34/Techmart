@@ -65,7 +65,7 @@ onClick={() =>
   />
   <div>
     <h2 className="text-lg font-semibold text-gray-800">{name}</h2>
-    <p className="text-sm text-gray-600">Price: ${price}</p>
+    <p className="text-sm text-gray-600">Price: ₹{price}</p>
   </div>
 </div>
 
@@ -91,7 +91,7 @@ onClick={() =>
     </button>
   </div>
   <p className="font-semibold text-gray-800 mt-2 sm:mt-0">
-    Total: ${price *quantityToBuy}
+    Total: ₹{price *quantityToBuy}
   </p>
 </div>
 
