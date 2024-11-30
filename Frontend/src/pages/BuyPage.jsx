@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaPaypal, FaGooglePay, FaCreditCard, FaApplePay, FaMoneyBill } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
+import { Toaster, toast } from "react-hot-toast";
 import { FirebaseAuthContext } from "../contexts/FirebaseAuthContext";
-import { Paper } from "@mui/material";
+
 
 const BuyPage = () => {
     const [shippingInfo, setShippingInfo] = useState({
@@ -15,17 +15,11 @@ const BuyPage = () => {
         phone: "",
     });
 
-    const [selectedPayment, setSelectedPayment] = useState("creditCard");
 
-    const handleShippingChange = (e) => {
-        const { name, value } = e.target;
-        setShippingInfo({ ...shippingInfo, [name]: value });
-    };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        alert("Order Placed Successfully!");
-    };
+ 
+
+ 
 ///////////////////////
 
 
@@ -39,7 +33,7 @@ const [paymentMethod, setPaymentMethod] = useState("COD");
 const { products,subtotalPrice,shippingFees} = useLocation().state;
 const { logedInUser } = useContext(FirebaseAuthContext);
 const SERVER_URL=import.meta.env.VITE_SERVER_URL;
-console.log("total ordered product form order page:",products)
+
 //store form data
 const [formData, setFormData] = useState({
   name: "",
@@ -83,6 +77,8 @@ const handlePlaceOrder = () => {
     zip 
    
   ) {
+
+    const id=toast.loading("Placing order...")
     try {
       fetch(`${SERVER_URL}/placeOrder`, {
         method: "POST",
@@ -93,23 +89,23 @@ const handlePlaceOrder = () => {
           userAuthId: logedInUser.uid,
           shipingInfo: {...formData,paymentMethod},
           products: products,
-          status: "Not delivered",
+          status: "Pending",
         }),
       })
         .then(async (response) => {
           if (response.ok) {
             const responseData = await response.json();
             console.log("response data after placing order:", responseData);
-            toast.success("Order placed successfully");
+            toast.success("Order placed successfully",{id:id});
           } else {
-            toast.error("Error placing order");
+            toast.error("Error placing order",{id:id});
           }
         })
         .catch((err) => {
           console.log("error placeorder:", err);
         });
     } catch (error) {
-      toast.error("Unexpected error !");
+      toast.error("Unexpected error !",{id:id});
     }
   } else {
     toast.error("Please fill all the fields");
@@ -129,6 +125,7 @@ const handlePlaceOrder = () => {
 
     return (
         <div className="min-h-screen bg-gray-100 py-16">
+            <Toaster/>
             <div className="container mx-auto px-6 lg:px-12">
                 {/* Header */}
                 <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
@@ -140,7 +137,7 @@ const handlePlaceOrder = () => {
                     <div className="lg:w-2/3 bg-white p-6 rounded-lg shadow-lg">
                         {/* Shipping Information */}
                         <h2 className="text-xl font-semibold text-gray-800 mb-4">Shipping Information</h2>
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form  className="space-y-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <input
 
@@ -267,7 +264,7 @@ const handlePlaceOrder = () => {
                             </div>
 
                             <button
-                            onClick={()=>handlePlaceOrder()}
+                            onClick={(e)=>{e.preventDefault();handlePlaceOrder()}}
                                 type="submit"
                                 className="bg-green-600 text-white py-3 px-8 rounded-lg w-full sm:w-auto hover:bg-green-700 transition"
                             >

@@ -41,6 +41,7 @@ const AdminContextProvider = ({ children }) => {
     }
   };
   const updateOrderStatus = (_id, newStatus) => {
+    const id=toast.loading("Updating...")
     try {
       fetch(`${SERVER_URL}/updateOrderStatus`, {
         method: "POST",
@@ -57,7 +58,7 @@ const AdminContextProvider = ({ children }) => {
 
           toast.success(" Status updated !", {
           
-            pauseOnHover: false,
+           id:id
           });
           if (responeData) {
             fetchOrders();
@@ -65,10 +66,11 @@ const AdminContextProvider = ({ children }) => {
         }
       });
     } catch (erroor) {
-      toast.error("Unexpected error");
+      toast.error("Unexpected error",{id:id});
     }
   };
   const deleteAProduct = (_id) => {
+    const id=toast.loading("Deleting...")
     try {
       fetch(`${SERVER_URL}/deleteAProduct/?product_id=${_id}`, {
         method: "DELETE",
@@ -81,12 +83,12 @@ const AdminContextProvider = ({ children }) => {
 
           if (responeData) {
             fetchListeProducts();
-            toast.success("Deleted !");
+            toast.success("Deleted !",{id:id});
           }
         }
       });
     } catch (erroor) {
-      alert("Error removing prdduct !");
+      alert("Error deleting prdduct !",{id:id});
     }
   };
 

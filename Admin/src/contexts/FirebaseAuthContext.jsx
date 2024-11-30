@@ -42,7 +42,7 @@ const FirebaseAuthContextProvider = ({ children }) => {
   };
 
   const loginUserWithEmailAndPassword = async (email, password) => {
-
+    const id=toast.loading("Loging in...")
     try {
       const user = await signInWithEmailAndPassword(
         firebaseAuth,
@@ -52,18 +52,19 @@ const FirebaseAuthContextProvider = ({ children }) => {
       if (user) {
        
 
-        toast.success("Logined Successfully !");
+        toast.success("Logined Successfully !",{id:id});
       } else {
-        toast.error("Wrong Email or Password");
+        toast.error("Wrong Email or Password",{id:id});
       }
     } catch (error) {
-      toast.error("Wrong Email or Password");
+      toast.error("Wrong Email or Password",{id:id});
     }
   };
   const logOut = async () => {
+    const id=toast.loading("Loging out...")
     await signOut(firebaseAuth)
-      .then(() => toast.success("Logout successfully !"))
-      .catch(() => toast.error("Error logOuting user"));
+      .then(() => toast.success("Logout successfully !",{id:id}))
+      .catch(() => toast.error("Error logOuting user",{id:id}));
   };
 
   useEffect(() => {

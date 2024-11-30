@@ -20,6 +20,7 @@ const FirebaseAuthContextProvider = ({ children }) => {
   const [logedInUser, setLogedInUser] = useState(null);
   const SERVER_URL = import.meta.env.VITE_SERVER_URL;
   const registerUserWithEmailAndPassword = async (email, password,name) => {
+    const id=toast.loading("Registering...")
     try {
       const user = await createUserWithEmailAndPassword(
         firebaseAuth,
@@ -32,7 +33,7 @@ const FirebaseAuthContextProvider = ({ children }) => {
 const currentUserIs=firebaseAuth.currentUser;
 const updatedUser=updateProfile(currentUserIs,{displayName:name})
 
-toast.success("User successfully Registered  !");
+toast.success("User Registered successfully",{id:id});
 addUserToDB(uid);
        
       }
@@ -40,11 +41,12 @@ addUserToDB(uid);
 
 
     } catch (error) {
-      toast.error("Error registering user !");
+      toast.error("Error registering user ",{id:id});
     }
   };
 
   const loginUserWithEmailAndPassword = async (email, password) => {
+    const id=toast.loading("Loging in...")
     try {
       const user = await signInWithEmailAndPassword(
         firebaseAuth,
@@ -53,31 +55,32 @@ addUserToDB(uid);
       )
         .then((user) => {
           if (user) {
-            toast.success("User logined successfully !");
+            toast.success("User logined successfully ",{id:id});
           }
         })
         .catch((error) => {
           console.log("Error login user:", error);
         });
     } catch (error) {
-      toast.error("Wrong Email or Password");
+      toast.error("Wrong Email or Password",{id:id});
     }
   };
   const resetPassword=async(email)=>{
-console.log("email to resent password:",email)
+    const id=toast.loading("Processing...")
     const result=await sendPasswordResetEmail(firebaseAuth,email).then((user)=>{
     
-        toast.success("Passwod reset email sent")
+        toast.success("Passwod reset email sent",{id:id})
      
     }).catch((err)=>{
-      toast.error("Unexpected error");
+      toast.error("Unexpected error",{id:id});
       console.log("error reseting password",err)
     })
   }
   const logOut = async () => {
+    const id=toast.loading("Loging out...")
     await signOut(firebaseAuth)
-      .then(() => toast.success("UserLogout successfully !"))
-      .catch(() => toast.error("Unexpected error"));
+      .then(() => toast.success("Logout done",{id:id}))
+      .catch(() => toast.error("Unexpected error",{id:id}));
   };
 
   useEffect(() => {

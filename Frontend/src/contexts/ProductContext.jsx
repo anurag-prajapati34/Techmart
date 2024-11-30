@@ -9,23 +9,23 @@ const ProductContextProvider = ({ children }) => {
 
 
   const [products, setProducts] = useState([]);
-  const [shopProducts,setShopProducts]=useState([]);
+  const [shopProducts, setShopProducts] = useState([]);
 
   const [cartProducts, setCartProducts] = useState([]);
   const [logedInUser, setLogedInUser] = useState();
   const newArrivalsRef = useRef();
   const SERVER_URL = import.meta.env.VITE_SERVER_URL;
-  
+
 
   const scrollToView = (sectionId) => {
     if (sectionId === "newArrivals") {
       newArrivalsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
-useEffect(()=>{
+  useEffect(() => {
 
-  setShopProducts(products)
-},[products])
+    setShopProducts(products)
+  }, [products])
   const fetchProducts = async () => {
     try {
       fetch(`${SERVER_URL}/products`).then(async (response) => {
@@ -54,7 +54,7 @@ useEffect(()=>{
 
   const addProductToUserCart = (product, sizeToBuy, quantityToBuy) => {
     const userAuthId = logedInUser.uid;
-
+const id=toast.loading("Adding to cart...");
     fetch(`${SERVER_URL}/addToCart`, {
       method: "POST",
       headers: {
@@ -68,15 +68,15 @@ useEffect(()=>{
       }),
     })
       .then((product) => {
-        toast.success("Successfully added to Cart !");
+        toast.success("Successfully added to Cart !",{id:id});
         fetchCartProducts();
       })
-      .catch((err) => toast.error("Unexpected error"));
+      .catch((err) => toast.error("Unexpected error",{id:id}));
   };
 
   const removeProductFromUserCart = (product_id) => {
     const userAuthId = logedInUser.uid;
-
+const id=toast.loading("Removing from cart...")
     fetch(`${SERVER_URL}/removeProduct`, {
       method: "POST",
       headers: {
@@ -89,14 +89,14 @@ useEffect(()=>{
     })
       .then(() => {
         fetchCartProducts();
-        toast.success("Product removed !", { position: "top-right" });
+        toast.success("Product removed !",{id:id});
       })
-      .catch(() => toast.error("Unexpected error"));
+      .catch(() => toast.error("Unexpected error",{id:id}));
   };
 
   const updateCartProduct = (product_id, newQuantity) => {
     const userAuthId = logedInUser.uid;
-
+    const id=toast.loading("Updating...")
     fetch(`${SERVER_URL}/updateCartProduct`, {
       method: "POST",
       headers: {
@@ -113,13 +113,13 @@ useEffect(()=>{
           const responseData = await response.json();
 
           if (responseData) {
-            toast.success("Updated successfully", { position: "top-right" });
+            toast.success("Updated successfully",{id:id});
             fetchCartProducts();
           }
         }
       })
       .catch((err) => {
-        toast.error("Unexpected error");
+        toast.error("Unexpected error",{id:id});
       });
   };
   const addProductRating = (product_id, comment, rating) => {
@@ -127,7 +127,7 @@ useEffect(()=>{
     const userName = logedInUser.displayName
       ? logedInUser.displayName
       : "No name";
-    console.log("ll", product_id, comment, rating, userEmail);
+      const id=toast.loading("Submiting review...")
     fetch(`${SERVER_URL}/productRatingAndReview`, {
       method: "POST",
       headers: {
@@ -145,16 +145,17 @@ useEffect(()=>{
         if (response.ok) {
           const responseData = await response.json();
           if (responseData) {
-            toast.success("Thanks for adding review !");
+            toast.success("Review submited",{id:id});
           }
         }
       })
       .catch((err) => {
-        toast.error("Unexpected error");
+        toast.error("Unexpected error",{id:id});
       });
   };
 
   const handleFeedbackSubmission = (formData) => {
+    const id=toast.loading("Removing from cart...")
     fetch(`${SERVER_URL}/feedback`, {
       method: 'POST',
       headers: {
@@ -168,11 +169,11 @@ useEffect(()=>{
       })
     }).then((response) => {
       if (response.ok) {
-        toast.success("Feedback submitted")
+        toast.success("Thanks for your valuable feedback",{id:id})
       } else {
-        toast.error("Unexpected error ")
+        toast.error("Unexpected error ",{id:id})
       }
-    }).catch((err) => toast.error("Unexpected error"))
+    }).catch((err) => toast.error("Unexpected error",{id:id}))
   }
 
 
@@ -208,7 +209,7 @@ useEffect(()=>{
         shopProducts,
         setShopProducts,
         handleFeedbackSubmission
-     
+
       }}
     >
       {children}
