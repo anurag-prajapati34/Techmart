@@ -6,7 +6,7 @@ import { toast,Toaster } from "react-hot-toast";
 import CustomCheckbox from "../components/CustomCheckBox";
 
 import { ProductMainImage } from "../components/ProductMainImage";
-import { FaImage, FaTags, FaDollarSign, FaClipboardList, FaCheckCircle } from "react-icons/fa";
+import { FaImage, FaTags, FaDollarSign, FaClipboardList, FaCheckCircle, FaRupeeSign } from "react-icons/fa";
 import { useEffect } from "react";
 
 export const AddProductPage = () => {
@@ -121,7 +121,7 @@ useEffect(()=>console.log(category),[category])
           <div>
             <label className="block text-gray-600 mb-2 font-medium">Product Price</label>
             <div className="flex items-center border rounded-md px-2 py-1 bg-gray-50 shadow-inner">
-              <FaDollarSign className="text-gray-400 mr-2" />
+              <FaRupeeSign className="text-gray-400 mr-2" />
               <input
                 type="number"
                 placeholder="Enter product price"
