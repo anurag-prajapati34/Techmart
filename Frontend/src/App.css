@@ -1,0 +1,44 @@
+#root {
+  
+  margin: 0 auto;
+
+  text-align: center;
+
+  --primary-color: #2563eb;
+
+  --secondary-color: #2564eb0e;
+
+  
+  --btn-hover-color: #1d4ed8;
+
+}
+
+.hide{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* Number of lines to display */
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+h1{
+  font-family: "Ubuntu", sans-serif;
+}
+
+.sm-hide{
+
+}
+.md-hide{
+
+}
+@media (max-width:680px) {
+  .sm-hide{
+    display: none;
+  }
+}
+@media (max-width:768px) {
+  .md-hide{
+    display: none;
+  }
+}

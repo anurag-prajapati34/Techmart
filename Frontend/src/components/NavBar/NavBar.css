@@ -1,0 +1,12 @@
+
+
+@media (max-width:700px) {
+    .nav-options{
+       display: none;
+    }
+    .menu-bar-icon{
+        visibility: visible;
+    }
+
+
+}

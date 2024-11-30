@@ -1,0 +1,21 @@
+.small-image{
+
+     background-color: var(--secondary-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+flex:1;
+    max-height: 100px;
+  
+    cursor: pointer;
+    max-width: 100px;
+
+  
+}
+
+.small-image img{
+    height: 100%;
+
+}

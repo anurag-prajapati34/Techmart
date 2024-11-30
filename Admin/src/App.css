@@ -1,0 +1,24 @@
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+
+  text-align: center;
+  --primary-color: #2563eb;
+
+  --secondary-color: #2564eb0e;
+
+  
+  --btn-hover-color: #1d4ed8;
+}
+
+
+
+.sm-hide{
+
+}
+
+@media (max-width:680px) {
+  .sm-hide{
+    display: none;
+  }
+}
