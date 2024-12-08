@@ -33,7 +33,9 @@ export const AddProductPage = () => {
     setExtraImages({ ...extraImages, [fieldName]: image });
   };
   const handleFormSubmit = async (e) => {
+    
     e.preventDefault();
+    console.log("name",name,"price",price,'fulldescription',fullDescription,"brand",brand,'category',category,'thumbanil:',thumbnail)
     if (!name || !price || !fullDescription || !category  || !thumbnail || !brand) {
       toast.error("Please fill all input fields");
       return;
@@ -139,15 +141,17 @@ useEffect(()=>console.log(category),[category])
             <label className="block text-gray-600 mb-2 font-medium">Category</label>
             <select
               className="w-full border rounded-md px-2 py-2 bg-gray-50 shadow-inner"
-              defaultValue={category}
+           value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
+              {/* <option>Select category</option> */}
              <option>Smartphone</option>
               <option>Smartwatch</option>
               <option>Headphone</option>
               <option>Tab</option>
               <option>TV</option>
-              <option>Computer</option>
+              <option>Desktop</option>
+              <option>Laptop</option>
               <option>AC</option>
               <option>Refrigerator</option>
               

@@ -42,3 +42,15 @@ h1{
     display: none;
   }
 }
+
+.hide-extra-lines{
+ 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Number of lines to display */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Adjust based on your line height */
+     /* Adjust to fit the number of lines */  
+
+}

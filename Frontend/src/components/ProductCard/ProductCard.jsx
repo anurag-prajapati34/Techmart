@@ -37,7 +37,7 @@ const navigate=useNavigate();
       </div>
       <div className="product-desc px-3     text-start w-full  ">
 <p className="text-sm text-gray-700">{product?.brand+"-"+product?.category}</p>
-        <h1 className="product-name">{name}</h1>
+        <h1 className="product-name hide-extra-lines">{name}</h1>
        
         
             <p className=" text-lg font-semibold">{'₹' + price}</p>
