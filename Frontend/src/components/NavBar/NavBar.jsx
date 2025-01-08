@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import Person from "@mui/icons-material/PersonOutline";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faBox, faCartArrowDown,faShoppingCart ,faX } from "@fortawesome/free-solid-svg-icons";
-import {faUser} from '@fortawesome/free-solid-svg-icons'
+
 import { CartIcon } from "../CartIcon";
 
 import { useContext } from "react";
 
 import { FirebaseAuthContext } from "../../contexts/FirebaseAuthContext";
-import "./navBAr.css";
+import './NavBar.css';
 import MenuSideBar from "../MenuSideBar";
 import ProfilePopup from "../ProfilePoup";
 
