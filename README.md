@@ -22,8 +22,8 @@ Techmart is designed to provide an intuitive and secure e-commerce platform for 
 - **Frontend**: React.js, Tailwind CSS, Vanilla CSS
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB
-- **Authentication**: JWT (JSON Web Tokens) for secure user login
-- **Deployment**: Deployed on [Your Preferred Hosting Service]
+- **Authentication**: Firebase Authentication for secure user login
+- **Deployment**: Deployed on Vercel
 
 
 
