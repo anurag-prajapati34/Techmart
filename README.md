@@ -6,11 +6,7 @@
 1. [Project Overview](#project-overview)
 2. [Features](#features)
 3. [Tech Stack](#tech-stack)
-4. [Installation](#installation)
-5. [Usage](#usage)
-6. [Contributing](#contributing)
-7. [License](#license)
-8. [Contact](#contact)
+
 
 ## **Project Overview**
 Techmart is designed to provide an intuitive and secure e-commerce platform for users to shop for electronics online. It includes functionalities such as user authentication, browsing products, and managing orders, all while ensuring a responsive and smooth user experience across devices.
@@ -29,11 +25,5 @@ Techmart is designed to provide an intuitive and secure e-commerce platform for 
 - **Authentication**: JWT (JSON Web Tokens) for secure user login
 - **Deployment**: Deployed on [Your Preferred Hosting Service]
 
-## **Installation**
 
-To run the project locally, follow these steps:
-
-### 1. Clone the repository:
-```bash
-git clone https://github.com/your-username/techmart.git
 
