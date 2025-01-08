@@ -157,21 +157,7 @@ useEffect(()=>console.log(category),[category])
               
             </select>
           </div>
-          {/* Subcategory */}
-          {/* <div>
-            <label className="block text-gray-600 mb-2 font-medium">Subcategory</label>
-            <select
-              className="w-full border rounded-md px-2 py-2 bg-gray-50 shadow-inner"
-              onChange={(e) => setSubCategory(e.target.value)}
-            >
-              <option>Smartphones</option>
-              <option>Smartwatches</option>
-              <option>Headphones</option>
-              <option>Tabs</option>
-              <option>Sneakers</option>
-            </select>
-          </div> */}
-          {/* Brand */}
+         
           <div>
             <label className="block text-gray-600 mb-2 font-medium">Brand</label>
             <input
