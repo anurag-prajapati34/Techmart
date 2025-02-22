@@ -46,6 +46,7 @@ export const HomePage = () => {
       
 
       <ProductList products={products?.slice(0,Math.min(8,products?.length))} all={true} />
+      
       {/*Best sellers*/}
 
     

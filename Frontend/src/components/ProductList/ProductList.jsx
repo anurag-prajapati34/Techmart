@@ -21,7 +21,7 @@ export const ProductList = ({ products, featured = false, all = false }) => {
 
 
           }
-        </div> : <div className="text-black text-2xl  text-center flex-1  flex items-center justify-center ">No products</div>
+        </div> : <div className="text-black text-2xl  text-center flex-1  flex items-center justify-center h-screen  ">Loading ...</div>
 
       }</>
   );
